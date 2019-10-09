@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.zeus</groupId>
+  <artifactId>zeus-all</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>io-security</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target> 
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.nimbusds/nimbus-jose-jwt -->
+	<dependency>
+	    <groupId>com.nimbusds</groupId>
+	    <artifactId>nimbus-jose-jwt</artifactId>
+	    <version>5.12</version>
+	</dependency>
+    <dependency>
+	    <groupId>org.springframework.security</groupId>
+	    <artifactId>spring-security-jwt</artifactId>
+	    <version>1.0.8.RELEASE</version>
+	</dependency>
+ 
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>2.0.2.RELEASE</version>
+        <exclusions>
+        	<exclusion>
+        		<artifactId>jackson-databind</artifactId>
+        		<groupId>com.fasterxml.jackson.core</groupId>
+        	</exclusion>
+        	<exclusion>
+        		<artifactId>jackson-datatype-jsr310</artifactId>
+        		<groupId>com.fasterxml.jackson.datatype</groupId>
+        	</exclusion>
+        </exclusions>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.9.4</version>
+	</dependency>
+	<dependency>
+	    <groupId>io.data.common</groupId>
+  		<artifactId>data-common-config</artifactId>
+  		<version>1.0</version>
+	</dependency>
+	<dependency>
+		<groupId>io.doraemon</groupId>
+  		<artifactId>doraemon-all</artifactId>
+  		<version>1.1</version>
+	</dependency>
+  </dependencies>
+ 
+</project>
