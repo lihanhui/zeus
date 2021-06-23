@@ -21,11 +21,14 @@ import io.zeus.token.RSAConfig;
 @ConditionalOnProperty(name="zeus.authorization.mode", havingValue="true")
 public class ServiceAuthImpl implements IServiceAuth {
 	private static final Long NINTY_SECONDS = 90 * 1000L;
+	private static String DEFAULT_SERVICE_AUTH_HEADER = "X-Service-Authorization";
 	private static Logger logger = LoggerFactory.getLogger(AccessToken.class);
 	private AccessToken accessToken;
+	private String serviceAuthHeader = DEFAULT_SERVICE_AUTH_HEADER;
 	public ServiceAuthImpl(){
 		logger.info("to create IServiceAuth bean for authentication between services");
 		ServiceAuthConf conf = ServiceAuthConf.getConf();
+		if(conf.getServiceAuthHeader() != null)  serviceAuthHeader = conf.getServiceAuthHeader();
 		this.accessToken = AccessToken.createAccessToken(conf.getClientId(), conf.getUserId(), 
 				System.currentTimeMillis()+conf.getExpireInterval()*60*1000);
 	}
@@ -51,11 +54,11 @@ public class ServiceAuthImpl implements IServiceAuth {
 	public AccessToken decode(String token) {
 		return AccessToken.decode(token);
 	}
-
+    
 	private String getAccessToken(HttpServletRequest request) {
-		String auth = request.getHeader("X-Mysky-Authorization");
+		String auth = request.getHeader(this.serviceAuthHeader);
 	    if(auth == null){
-	    	logger.info("can not get X-Mysky-Authorization header from the request");
+	    	logger.info("can not get %s header from the request", this.serviceAuthHeader);
 	    	return null;
 	    }
 	    auth.trim();

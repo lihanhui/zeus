@@ -7,6 +7,7 @@ public class ServiceAuthConf {
 	private String userId;
 	private String clientId;
 	private Long expireInterval; // unit: minute
+	private String serviceAuthHeader;
 	private static ServiceAuthConf conf;
 	
 	public static ServiceAuthConf getConf(){
@@ -43,15 +44,22 @@ public class ServiceAuthConf {
 	public void setExpireInterval(Long expireInterval) {
 		this.expireInterval = expireInterval;
 	}
+	public String getServiceAuthHeader() {
+		return serviceAuthHeader;
+	}
+	public void setServiceAuthHeader(String serviceAuthHeader) {
+		this.serviceAuthHeader = serviceAuthHeader;
+	}
 	@Override
 	public String toString() {
 		return "ServiceConf [userId=" + userId + ", clientId=" + clientId + ", expireInterval=" + expireInterval + "]";
 	}
-	public ServiceAuthConf(String userId, String clientId, Long expireInterval) {
+	public ServiceAuthConf(String userId, String clientId, Long expireInterval, String serviceAuthHeader) {
 		super();
 		this.userId = userId;
 		this.clientId = clientId;
 		this.expireInterval = expireInterval;
+		this.serviceAuthHeader = serviceAuthHeader;
 	}
 	public ServiceAuthConf() {
 		super();
