@@ -6,7 +6,7 @@ import java.util.Map;
 import io.doraemon.md5.MD5;
 
 public class SimpleSignature implements ISignature{
-	public static String ALGORITHM = "simple";
+	public static String ALGORITHM = "default";
 	private HashMap<String, String> map = new HashMap<>();
 	public SimpleSignature() {
 		super();

@@ -51,21 +51,13 @@
         </exclusions>
     </dependency>
     <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-	<dependency>
-	    <groupId>com.fasterxml.jackson.core</groupId>
-	    <artifactId>jackson-databind</artifactId>
-	    <version>2.9.10</version>
-	</dependency>
+	
 	<dependency>
 	    <groupId>javax.servlet</groupId>
 	    <artifactId>servlet-api</artifactId>
 	    <version>2.5</version>
 	</dependency>
-	<dependency>
-	    <groupId>io.data.common</groupId>
-  		<artifactId>data-common-config</artifactId>
-  		<version>1.0</version>
-	</dependency>
+	
 	<dependency>
 		<groupId>io.doraemon</groupId>
   		<artifactId>doraemon-all</artifactId>

@@ -17,9 +17,7 @@ import com.nimbusds.jwt.JWTClaimsSet;
 
 import io.doraemon.logging.Logger;
 import io.doraemon.logging.LoggerFactory;
-import io.doraemon.restful.ResultMsg;
 import io.doraemon.uuid.UUID;
-import io.zeus.token.AccessToken.Builder;
 
 public class AccessToken {
 	private static Logger logger = LoggerFactory.getLogger(AccessToken.class);
