@@ -2,13 +2,8 @@ package io.zeus.blocked.impl;
 
 import java.util.Set;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.stereotype.Component;
-
 import io.zeus.blocked.ISensitiveFilter;
 
-@Component
-@ConditionalOnProperty(name="zeus.sensitive.file")
 public class SensitiveFilterImpl implements ISensitiveFilter {
 	private SensitiveWordFilter filter;
 	public SensitiveFilterImpl() {

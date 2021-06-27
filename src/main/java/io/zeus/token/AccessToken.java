@@ -4,8 +4,6 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.nimbusds.jose.EncryptionMethod;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWEAlgorithm;
@@ -88,7 +86,7 @@ public class AccessToken {
 		b.userId(userId);
 		return b.build();
 	} 
-	public static AccessToken decode(HttpServletRequest request){
+	/*public static AccessToken decode(HttpServletRequest request){
 		String auth = request.getHeader("Authorization");
 	    if(auth == null){
 	    	logger.info("can not get Authorization header from the request");
@@ -112,7 +110,7 @@ public class AccessToken {
 	    }
 	    auth.trim();
 	    return auth.substring("Bearer ".length());
-	}
+	}//*/
 	public static AccessToken decode(String token) {
 		RSADecrypter decrypter = new RSADecrypter(RSAConfig.rsaPrivateKey);
 		try {
