@@ -2,8 +2,7 @@ package com.naolu.saas.message.system.actor;
 
 import java.util.List;
 
-import com.naolu.message.base.TokenMsg;
-import com.naolu.message.base.TokenMsg2;
+import com.naolu.saas.message.base.TokenMsg;
 
 public class ActorMsg2 {
 	private String actorId;
@@ -19,12 +18,12 @@ public class ActorMsg2 {
 	private String password;
 	private List<String> adminRegion;
 	private Integer userType;
-	public TokenMsg2 token;
+	public TokenMsg token;
 
-	public TokenMsg2 getToken() {
+	public TokenMsg getToken() {
 		return token;
 	}
-	public void setToken(TokenMsg2 token) {
+	public void setToken(TokenMsg token) {
 		this.token = token;
 	}
 	public String getActorId() {
@@ -134,7 +133,7 @@ public class ActorMsg2 {
 	}
 	public ActorMsg2(String actorId, String roleId, Integer roleMask, String orgId, String deptId, String channelId,
 			List<String> authorizedChanIds, String name, String email, String phone, String password,
-			List<String> adminRegion, Integer userType, TokenMsg2 token) {
+			List<String> adminRegion, Integer userType, TokenMsg token) {
 		super();
 		this.actorId = actorId;
 		this.roleId = roleId;
