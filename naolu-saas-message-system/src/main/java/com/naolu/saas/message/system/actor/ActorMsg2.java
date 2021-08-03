@@ -1,7 +1,5 @@
 package com.naolu.saas.message.system.actor;
 
-import java.util.List;
-
 import com.naolu.saas.message.base.TokenMsg;
 
 public class ActorMsg2 {
@@ -10,14 +8,10 @@ public class ActorMsg2 {
 	private Integer roleMask; 	// user(1)|agent(2)|admin(4)
 	private String orgId;    	// assigned when the actor creates organization;  
 	private String deptId;   	// default: null, 顶层是orgId
-	private String channelId;
-	private List<String> authorizedChanIds; 
 	private String name;
 	private String email;
 	private String phone;
 	private String password;
-	private List<String> adminRegion;
-	private Integer userType;
 	public TokenMsg token;
 
 	public TokenMsg getToken() {
@@ -97,58 +91,29 @@ public class ActorMsg2 {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public List<String> getAdminRegion() {
-		return adminRegion;
-	}
-	public void setAdminRegion(List<String> adminRegion) {
-		this.adminRegion = adminRegion;
-	}
-	public Integer getUserType() {
-		return userType;
-	}
-	public void setUserType(Integer userType) {
-		this.userType = userType;
-	}
+	
 	public ActorMsg2() {
 		super();
-	}
-	public String getChannelId() {
-		return channelId;
-	}
-	public void setChannelId(String channelId) {
-		this.channelId = channelId;
-	}
-	public List<String> getAuthorizedChanIds() {
-		return authorizedChanIds;
-	}
-	public void setAuthorizedChanIds(List<String> authorizedChanIds) {
-		this.authorizedChanIds = authorizedChanIds;
 	}
 	@Override
 	public String toString() {
 		return "ActorMsg2 [actorId=" + actorId + ", roleId=" + roleId + ", roleMask=" + roleMask + ", orgId=" + orgId
-				+ ", deptId=" + deptId + ", channelId=" + channelId + ", authorizedChanIds=" + authorizedChanIds + ", name="
-				+ name + ", email=" + email + ", phone=" + phone + ", password=" + password + ", adminRegion="
-				+ adminRegion + ", userType=" + userType + ", token=" + token + "]";
+				+ ", deptId=" + deptId + ", name=" + name + ", email=" + email + ", phone=" + phone + ", password="
+				+ password + ", token=" + token + "]";
 	}
-	public ActorMsg2(String actorId, String roleId, Integer roleMask, String orgId, String deptId, String channelId,
-			List<String> authorizedChanIds, String name, String email, String phone, String password,
-			List<String> adminRegion, Integer userType, TokenMsg token) {
+	public ActorMsg2(String actorId, String roleId, Integer roleMask, String orgId, String deptId, String name,
+			String email, String phone, String password, TokenMsg token) {
 		super();
 		this.actorId = actorId;
 		this.roleId = roleId;
 		this.roleMask = roleMask;
 		this.orgId = orgId;
 		this.deptId = deptId;
-		this.channelId = channelId;
-		this.authorizedChanIds = authorizedChanIds;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.password = password;
-		this.adminRegion = adminRegion;
-		this.userType = userType;
 		this.token = token;
 	}
-	
+
 }
