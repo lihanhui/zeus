@@ -8,5 +8,6 @@
   <modules>
     <module>naolu-saas-message-base</module>
     <module>naolu-saas-message-system</module>
+    <module>naolu-saas-message-user</module>
   </modules>
 </project>
