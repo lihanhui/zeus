@@ -10,6 +10,7 @@ import com.nimbusds.jose.JWEAlgorithm;
 import com.nimbusds.jose.JWEHeader;
 import com.nimbusds.jose.crypto.RSADecrypter;
 import com.nimbusds.jose.crypto.RSAEncrypter;
+import com.nimbusds.jose.crypto.impl.RSAKeyUtils;
 import com.nimbusds.jwt.EncryptedJWT;
 import com.nimbusds.jwt.JWTClaimsSet;
 
@@ -112,7 +113,7 @@ public class AccessToken {
 	    return auth.substring("Bearer ".length());
 	}//*/
 	public static AccessToken decode(String token) {
-		RSADecrypter decrypter = new RSADecrypter(RSAConfig.rsaPrivateKey);
+		RSADecrypter decrypter = new RSADecrypter(RSAConfig.getConfig().getPrivateKey());
 		try {
 			EncryptedJWT jwt = EncryptedJWT.parse(token);
 			jwt.decrypt(decrypter);
@@ -176,7 +177,7 @@ public class AccessToken {
 		public AccessToken build() {
 			JWTClaimsSet jwtClaims = b.build();
 			EncryptedJWT jwt = new EncryptedJWT(headerBuilder.build(), jwtClaims);
-			RSAEncrypter encrypter = new RSAEncrypter(RSAConfig.rsaPublicKey);
+			RSAEncrypter encrypter = new RSAEncrypter(RSAConfig.getConfig().getPublicKey());
 			try {
 				jwt.encrypt(encrypter);
 				return new AccessToken(headerBuilder.build(), jwtClaims, jwt.serialize());
@@ -197,6 +198,8 @@ public class AccessToken {
 		b.userId("1234567");
 		System.out.println(b);
 		AccessToken token = b.build();
+		//int len = RSAKeyUtils.keyBitLength(RSAConfig.getConfig().getPrivateKey());
+		AccessToken token2 = AccessToken.decode(token.getToken());
 		System.out.println(token);
 		//String t = AccessToken.encode(token);
 		//System.out.println(t);
