@@ -10,7 +10,6 @@ import com.nimbusds.jose.JWEAlgorithm;
 import com.nimbusds.jose.JWEHeader;
 import com.nimbusds.jose.crypto.RSADecrypter;
 import com.nimbusds.jose.crypto.RSAEncrypter;
-import com.nimbusds.jose.crypto.impl.RSAKeyUtils;
 import com.nimbusds.jwt.EncryptedJWT;
 import com.nimbusds.jwt.JWTClaimsSet;
 
@@ -87,33 +86,8 @@ public class AccessToken {
 		b.userId(userId);
 		return b.build();
 	} 
-	/*public static AccessToken decode(HttpServletRequest request){
-		String auth = request.getHeader("Authorization");
-	    if(auth == null){
-	    	logger.info("can not get Authorization header from the request");
-	    	return null;
-	    }
-	    auth.trim();
-	    String token = auth.substring("Bearer ".length());
-    	try {
-			return AccessToken.decode(token);
-		} catch (Exception e) {
-			logger.info("can not decode token from request", e);
-		}
-		return null;
-	    
-	}
-	public static String getAccessToken(HttpServletRequest request){
-		String auth = request.getHeader("Authorization");
-	    if(auth == null){
-	    	logger.info("can not get Authorization header from the request");
-	    	return null;
-	    }
-	    auth.trim();
-	    return auth.substring("Bearer ".length());
-	}//*/
 	public static AccessToken decode(String token) {
-		RSADecrypter decrypter = new RSADecrypter(RSAConfig.getConfig().getPrivateKey());
+		RSADecrypter decrypter = new RSADecrypter(RSAConfig.getConfig().getPrivateKey(), null, true);
 		try {
 			EncryptedJWT jwt = EncryptedJWT.parse(token);
 			jwt.decrypt(decrypter);
