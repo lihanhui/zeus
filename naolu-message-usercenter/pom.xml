@@ -10,7 +10,7 @@
   <groupId>com.naolu.message</groupId>
   <artifactId>naolu-message-usercenter</artifactId>
   <version>1.0</version>
-  <name>naolu-message-user</name>
+  <name>naolu-message-usercenter</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
