@@ -10,7 +10,7 @@ public class Signature {
 	private static Logger logger = LoggerFactory.getLogger(Signature.class);
 	private static Map<String, Class<? extends ISignature>> signatures = new ConcurrentHashMap<>();
 	static {
-		signatures.put("simple", SimpleSignature.class);
+		signatures.put("basic", SimpleSignature.class);
 	}
 	
 	public static ISignature sign(String signAlgorithm, String signature, String accessToken) {
