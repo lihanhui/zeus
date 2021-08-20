@@ -7,5 +7,6 @@
   <packaging>pom</packaging>
   <modules>
     <module>naolu-message-usercenter</module>
+    <module>naolu-message-upload</module>
   </modules>
 </project>
