@@ -7,6 +7,6 @@
   
   <packaging>pom</packaging>
   <modules>
-    <module>naolu-zeus-core</module>
+     <module>naolu-zeus-core</module>
   </modules>
 </project>
