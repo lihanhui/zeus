@@ -3,7 +3,6 @@ package com.zeus.auth.user;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import javax.naming.spi.DirStateFactory.Result;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,10 +12,8 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.alibaba.fastjson.JSONObject;
 
-import io.doraemon.json.JsonUtil;
 import io.doraemon.logging.Logger;
 import io.doraemon.logging.LoggerFactory;
-import io.doraemon.restful.ResultMsg;
 import io.zeus.token.AccessToken;
 
 public class AuthUserRestHandlerInterceptor extends HandlerInterceptorAdapter{
@@ -40,7 +37,6 @@ public class AuthUserRestHandlerInterceptor extends HandlerInterceptorAdapter{
 			throws Exception {
         //获取accessToken
         String token = this.getToken(request);
-
         if (token == null) {
             //throw RuntimeException;
         }
