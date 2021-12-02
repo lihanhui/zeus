@@ -6,7 +6,7 @@ import java.util.Map;
 import io.doraemon.md5.MD5;
 
 public class SimpleSignature implements ISignature{
-	public static String ALGORITHM = "default";
+	public static String ALGORITHM = "basic";
 	private HashMap<String, String> map = new HashMap<>();
 	public SimpleSignature() {
 		super();
@@ -64,5 +64,11 @@ public class SimpleSignature implements ISignature{
 	@Override
 	public Boolean isSignOk() {
 		return sign(map);
+	}
+	public static void main(String[] args){
+		SimpleSignature sign = new SimpleSignature();
+		sign.sign("productId=saas-web&version=1.0.0&uuid=78c66c7a844534ffb6e83999eb2a39fe&userId=611a139054685e8ad45c469c&timestamp=1635474737000&sign=e020c77a4847d80f5b955961fddf34a0", 
+				"eyJlbmMiOiJBMTI4R0NNIiwiYWxnIjoiUlNBMV81In0.xWnoVLbJtHojlUYb_fOQYlILpuiNSbM8jZscgnBh5DtJKNWEgaXvOgFxKVAjw4Su2K9KrSb5gIb3-9HYxbrdGevI62_DIsCbzk2xexjDvwMqSDeJXMZjtl8sBNC49sL8YpvbQju4G8WBxeRIV57yvF-c0afj_L0qlh_oeu8TRhY.lptJSVfpckAzIWmo.irqZvTKkXmfemvN2q4OPdNgcjw4LqgXx44NTY1prTKGwJjBrqIaGX5lUAiPGCPUlZzsGy4L72sEdBQX1YMeKpM7NqGGdxAzp2QzsCIvja5qGl904rh0.1ue3yJkalQufAP7sVCkpVw");
+		sign.isSignOk();
 	}
 }
