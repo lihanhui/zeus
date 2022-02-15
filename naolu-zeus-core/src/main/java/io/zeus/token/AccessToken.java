@@ -34,7 +34,11 @@ public class AccessToken {
 	public void setToken(String token) {
 		this.token = token;
 	}
-
+	
+	public Object getClaim(String name) {
+		return this.jwtClaims.getClaim(name);
+	}
+	
 	public Long getIssueDate(){
 		return jwtClaims.getIssueTime() != null ? jwtClaims.getIssueTime().getTime(): null;
 	}
@@ -170,10 +174,12 @@ public class AccessToken {
 		b.issueDate(System.currentTimeMillis());
 		b.issuer("l.zeus.io");
 		b.userId("1234567");
+		//b.claim("passwd", "nihao");
 		System.out.println(b);
 		AccessToken token = b.build();
 		//int len = RSAKeyUtils.keyBitLength(RSAConfig.getConfig().getPrivateKey());
 		AccessToken token2 = AccessToken.decode(token.getToken());
+		System.out.println(token2.getClaim("passwd"));
 		System.out.println(token);
 		//String t = AccessToken.encode(token);
 		//System.out.println(t);
