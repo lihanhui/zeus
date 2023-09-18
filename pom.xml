@@ -7,7 +7,7 @@
   
   <packaging>pom</packaging>
   <modules>
-    <module>naolu-zeus-core</module>
+    <module>zeus-core</module>
     <module>zeus-auth</module>
   </modules>
 </project>
