@@ -3,20 +3,25 @@ package com.zeus.auth.user;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.lang.Nullable;
+import org.springframework.web.context.request.WebRequestInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.handler.WebRequestHandlerInterceptorAdapter;
 
 import com.alibaba.fastjson.JSONObject;
 
 import io.doraemon.logging.Logger;
 import io.doraemon.logging.LoggerFactory;
 import io.zeus.token.AccessToken;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-public class AuthUserRestHandlerInterceptor extends HandlerInterceptorAdapter{
+public class AuthUserRestHandlerInterceptor extends WebRequestHandlerInterceptorAdapter{
+	public AuthUserRestHandlerInterceptor(WebRequestInterceptor requestInterceptor) {
+		super(requestInterceptor);
+		// TODO Auto-generated constructor stub
+	}
+
 	static private Logger logger = LoggerFactory.getLogger(AuthUserRestHandlerInterceptor.class);
 	
 	private String getBody(HttpServletRequest request) {
@@ -91,7 +96,7 @@ public class AuthUserRestHandlerInterceptor extends HandlerInterceptorAdapter{
 
 	@Override
 	public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response,
-			Object handler) throws Exception {
+			Object handler)  {
 	}
 	
 	private static String BEARER_ = "Bearer ";

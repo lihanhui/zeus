@@ -3,23 +3,17 @@ package com.zeus.auth.service;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import javax.naming.spi.DirStateFactory.Result;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
 
-import org.springframework.lang.Nullable;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-import com.alibaba.fastjson.JSONObject;
-
-import io.doraemon.json.JsonUtil;
 import io.doraemon.logging.Logger;
 import io.doraemon.logging.LoggerFactory;
-import io.doraemon.restful.ResultMsg;
 import io.zeus.token.AccessToken;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-public class AuthServiceRestHandlerInterceptor extends HandlerInterceptorAdapter{
+@Component
+public class AuthServiceRestHandlerInterceptor implements HandlerInterceptor{
 	static private Logger logger = LoggerFactory.getLogger(AuthServiceRestHandlerInterceptor.class);
 	
 	private String getBody(HttpServletRequest request) {
@@ -35,7 +29,7 @@ public class AuthServiceRestHandlerInterceptor extends HandlerInterceptorAdapter
 		}
 		return wholeStr;
 	}
-	@Override
+	
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
         //获取accessToken
@@ -57,21 +51,6 @@ public class AuthServiceRestHandlerInterceptor extends HandlerInterceptorAdapter
 		return true; //ok
 	}
 
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			@Nullable ModelAndView modelAndView) throws Exception {
-	}
-
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
-			@Nullable Exception ex) throws Exception {
-	}
-
-	@Override
-	public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response,
-			Object handler) throws Exception {
-	}
-	
 	private static String BEARER_ = "Bearer ";
 	private String getToken(HttpServletRequest request) {
         String authorization = request.getHeader("X-Authorization");
